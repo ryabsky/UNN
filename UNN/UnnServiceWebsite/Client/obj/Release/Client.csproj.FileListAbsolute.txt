@@ -1,5 +1,0 @@
-D:\dev\UNN\UnnServiceWebsite\Client\bin\Release\Client.exe.config
-D:\dev\UNN\UnnServiceWebsite\Client\bin\Release\Client.exe
-D:\dev\UNN\UnnServiceWebsite\Client\bin\Release\Client.pdb
-D:\dev\UNN\UnnServiceWebsite\Client\obj\Release\Client.exe
-D:\dev\UNN\UnnServiceWebsite\Client\obj\Release\Client.pdb
