@@ -1,0 +1,587 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UnnDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="UnnDataModelStoreContainer">
+          <EntitySet Name="buildings" EntityType="UnnDataModel.Store.buildings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="class_assignments" EntityType="UnnDataModel.Store.class_assignments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="departments" EntityType="UnnDataModel.Store.departments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="directions" EntityType="UnnDataModel.Store.directions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="group_assignments" EntityType="UnnDataModel.Store.group_assignments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="groups" EntityType="UnnDataModel.Store.groups" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="rooms" EntityType="UnnDataModel.Store.rooms" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="start_times" EntityType="UnnDataModel.Store.start_times" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="teachers" EntityType="UnnDataModel.Store.teachers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="weekdays" EntityType="UnnDataModel.Store.weekdays" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_class_assignments_rooms" Association="UnnDataModel.Store.FK_class_assignments_rooms">
+            <End Role="rooms" EntitySet="rooms" />
+            <End Role="class_assignments" EntitySet="class_assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_class_assignments_start_times" Association="UnnDataModel.Store.FK_class_assignments_start_times">
+            <End Role="start_times" EntitySet="start_times" />
+            <End Role="class_assignments" EntitySet="class_assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_class_assignments_teachers" Association="UnnDataModel.Store.FK_class_assignments_teachers">
+            <End Role="teachers" EntitySet="teachers" />
+            <End Role="class_assignments" EntitySet="class_assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_class_assignments_weekdays" Association="UnnDataModel.Store.FK_class_assignments_weekdays">
+            <End Role="weekdays" EntitySet="weekdays" />
+            <End Role="class_assignments" EntitySet="class_assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_group_assignments_class_assignments" Association="UnnDataModel.Store.FK_group_assignments_class_assignments">
+            <End Role="class_assignments" EntitySet="class_assignments" />
+            <End Role="group_assignments" EntitySet="group_assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_group_assignments_groups" Association="UnnDataModel.Store.FK_group_assignments_groups">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="group_assignments" EntitySet="group_assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_directions" Association="UnnDataModel.Store.FK_groups_directions">
+            <End Role="directions" EntitySet="directions" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_room_building" Association="UnnDataModel.Store.FK_room_building">
+            <End Role="buildings" EntitySet="buildings" />
+            <End Role="rooms" EntitySet="rooms" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="buildings">
+          <Key>
+            <PropertyRef Name="building_id" />
+          </Key>
+          <Property Name="building_id" Type="int" Nullable="false" />
+          <Property Name="building_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="class_assignments">
+          <Key>
+            <PropertyRef Name="class_assignment_id" />
+          </Key>
+          <Property Name="class_assignment_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="room_id" Type="int" Nullable="false" />
+          <Property Name="start_time_id" Type="time" Nullable="false" />
+          <Property Name="weekday_id" Type="int" Nullable="false" />
+          <Property Name="teacher_id" Type="int" Nullable="false" />
+          <Property Name="class_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="lecture_indicator" Type="bit" Nullable="false" />
+          <Property Name="odd_even_indicator" Type="bit" />
+        </EntityType>
+        <EntityType Name="departments">
+          <Key>
+            <PropertyRef Name="department_id" />
+          </Key>
+          <Property Name="department_id" Type="int" Nullable="false" />
+          <Property Name="department_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="directions">
+          <Key>
+            <PropertyRef Name="direction_id" />
+          </Key>
+          <Property Name="direction_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="direction_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="group_assignments">
+          <Key>
+            <PropertyRef Name="group_assignment_id" />
+          </Key>
+          <Property Name="group_assignment_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="class_assignment_id" Type="int" Nullable="false" />
+          <Property Name="group_id" Type="int" Nullable="false" />
+          <Property Name="subgroup_id" Type="int" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="group_id" />
+          </Key>
+          <Property Name="group_id" Type="int" Nullable="false" />
+          <Property Name="year_id" Type="int" Nullable="false" />
+          <Property Name="direction_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rooms">
+          <Key>
+            <PropertyRef Name="room_id" />
+          </Key>
+          <Property Name="room_id" Type="int" Nullable="false" />
+          <Property Name="building_id" Type="int" Nullable="false" />
+          <Property Name="room_number" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="start_times">
+          <Key>
+            <PropertyRef Name="start_time_id" />
+          </Key>
+          <Property Name="start_time_id" Type="time" Nullable="false" />
+        </EntityType>
+        <EntityType Name="teachers">
+          <Key>
+            <PropertyRef Name="teacher_id" />
+          </Key>
+          <Property Name="teacher_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="last_name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="weekdays">
+          <Key>
+            <PropertyRef Name="weekday_id" />
+          </Key>
+          <Property Name="weekday_id" Type="int" Nullable="false" />
+          <Property Name="weekday" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_class_assignments_rooms">
+          <End Role="rooms" Type="UnnDataModel.Store.rooms" Multiplicity="1" />
+          <End Role="class_assignments" Type="UnnDataModel.Store.class_assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rooms">
+              <PropertyRef Name="room_id" />
+            </Principal>
+            <Dependent Role="class_assignments">
+              <PropertyRef Name="room_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_class_assignments_start_times">
+          <End Role="start_times" Type="UnnDataModel.Store.start_times" Multiplicity="1" />
+          <End Role="class_assignments" Type="UnnDataModel.Store.class_assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="start_times">
+              <PropertyRef Name="start_time_id" />
+            </Principal>
+            <Dependent Role="class_assignments">
+              <PropertyRef Name="start_time_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_class_assignments_teachers">
+          <End Role="teachers" Type="UnnDataModel.Store.teachers" Multiplicity="1" />
+          <End Role="class_assignments" Type="UnnDataModel.Store.class_assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teachers">
+              <PropertyRef Name="teacher_id" />
+            </Principal>
+            <Dependent Role="class_assignments">
+              <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_class_assignments_weekdays">
+          <End Role="weekdays" Type="UnnDataModel.Store.weekdays" Multiplicity="1" />
+          <End Role="class_assignments" Type="UnnDataModel.Store.class_assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="weekdays">
+              <PropertyRef Name="weekday_id" />
+            </Principal>
+            <Dependent Role="class_assignments">
+              <PropertyRef Name="weekday_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_group_assignments_class_assignments">
+          <End Role="class_assignments" Type="UnnDataModel.Store.class_assignments" Multiplicity="1" />
+          <End Role="group_assignments" Type="UnnDataModel.Store.group_assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="class_assignments">
+              <PropertyRef Name="class_assignment_id" />
+            </Principal>
+            <Dependent Role="group_assignments">
+              <PropertyRef Name="class_assignment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_group_assignments_groups">
+          <End Role="groups" Type="UnnDataModel.Store.groups" Multiplicity="1" />
+          <End Role="group_assignments" Type="UnnDataModel.Store.group_assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="group_id" />
+            </Principal>
+            <Dependent Role="group_assignments">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_directions">
+          <End Role="directions" Type="UnnDataModel.Store.directions" Multiplicity="1" />
+          <End Role="groups" Type="UnnDataModel.Store.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="directions">
+              <PropertyRef Name="direction_id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="direction_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_room_building">
+          <End Role="buildings" Type="UnnDataModel.Store.buildings" Multiplicity="1" />
+          <End Role="rooms" Type="UnnDataModel.Store.rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="buildings">
+              <PropertyRef Name="building_id" />
+            </Principal>
+            <Dependent Role="rooms">
+              <PropertyRef Name="building_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UnnDataModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="UNNEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="buildings" EntityType="UnnDataModel.building" />
+          <EntitySet Name="class_assignments" EntityType="UnnDataModel.class_assignments" />
+          <EntitySet Name="departments" EntityType="UnnDataModel.department" />
+          <EntitySet Name="directions" EntityType="UnnDataModel.direction" />
+          <EntitySet Name="group_assignments" EntityType="UnnDataModel.group_assignments" />
+          <EntitySet Name="groups" EntityType="UnnDataModel.group" />
+          <EntitySet Name="rooms" EntityType="UnnDataModel.room" />
+          <EntitySet Name="start_times" EntityType="UnnDataModel.start_times" />
+          <EntitySet Name="teachers" EntityType="UnnDataModel.teacher" />
+          <EntitySet Name="weekdays" EntityType="UnnDataModel.weekday" />
+          <AssociationSet Name="FK_room_building" Association="UnnDataModel.FK_room_building">
+            <End Role="buildings" EntitySet="buildings" />
+            <End Role="rooms" EntitySet="rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_class_assignments_rooms" Association="UnnDataModel.FK_class_assignments_rooms">
+            <End Role="rooms" EntitySet="rooms" />
+            <End Role="class_assignments" EntitySet="class_assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_class_assignments_start_times" Association="UnnDataModel.FK_class_assignments_start_times">
+            <End Role="start_times" EntitySet="start_times" />
+            <End Role="class_assignments" EntitySet="class_assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_class_assignments_teachers" Association="UnnDataModel.FK_class_assignments_teachers">
+            <End Role="teachers" EntitySet="teachers" />
+            <End Role="class_assignments" EntitySet="class_assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_class_assignments_weekdays" Association="UnnDataModel.FK_class_assignments_weekdays">
+            <End Role="weekdays" EntitySet="weekdays" />
+            <End Role="class_assignments" EntitySet="class_assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_group_assignments_class_assignments" Association="UnnDataModel.FK_group_assignments_class_assignments">
+            <End Role="class_assignments" EntitySet="class_assignments" />
+            <End Role="group_assignments" EntitySet="group_assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_directions" Association="UnnDataModel.FK_groups_directions">
+            <End Role="directions" EntitySet="directions" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_group_assignments_groups" Association="UnnDataModel.FK_group_assignments_groups">
+            <End Role="groups" EntitySet="groups" />
+            <End Role="group_assignments" EntitySet="group_assignments" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="building">
+          <Key>
+            <PropertyRef Name="building_id" />
+          </Key>
+          <Property Name="building_id" Type="Int32" Nullable="false" />
+          <Property Name="building_name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="rooms" Relationship="UnnDataModel.FK_room_building" FromRole="buildings" ToRole="rooms" />
+        </EntityType>
+        <EntityType Name="class_assignments">
+          <Key>
+            <PropertyRef Name="class_assignment_id" />
+          </Key>
+          <Property Name="class_assignment_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="room_id" Type="Int32" Nullable="false" />
+          <Property Name="start_time_id" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="weekday_id" Type="Int32" Nullable="false" />
+          <Property Name="teacher_id" Type="Int32" Nullable="false" />
+          <Property Name="class_name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="lecture_indicator" Type="Boolean" Nullable="false" />
+          <Property Name="odd_even_indicator" Type="Boolean" />
+          <NavigationProperty Name="room" Relationship="UnnDataModel.FK_class_assignments_rooms" FromRole="class_assignments" ToRole="rooms" />
+          <NavigationProperty Name="start_times" Relationship="UnnDataModel.FK_class_assignments_start_times" FromRole="class_assignments" ToRole="start_times" />
+          <NavigationProperty Name="teacher" Relationship="UnnDataModel.FK_class_assignments_teachers" FromRole="class_assignments" ToRole="teachers" />
+          <NavigationProperty Name="weekday" Relationship="UnnDataModel.FK_class_assignments_weekdays" FromRole="class_assignments" ToRole="weekdays" />
+          <NavigationProperty Name="group_assignments" Relationship="UnnDataModel.FK_group_assignments_class_assignments" FromRole="class_assignments" ToRole="group_assignments" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="department_id" />
+          </Key>
+          <Property Name="department_id" Type="Int32" Nullable="false" />
+          <Property Name="department_name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="direction">
+          <Key>
+            <PropertyRef Name="direction_id" />
+          </Key>
+          <Property Name="direction_name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="direction_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="groups" Relationship="UnnDataModel.FK_groups_directions" FromRole="directions" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="group_assignments">
+          <Key>
+            <PropertyRef Name="group_assignment_id" />
+          </Key>
+          <Property Name="group_assignment_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="class_assignment_id" Type="Int32" Nullable="false" />
+          <Property Name="group_id" Type="Int32" Nullable="false" />
+          <Property Name="subgroup_id" Type="Int32" />
+          <NavigationProperty Name="class_assignments" Relationship="UnnDataModel.FK_group_assignments_class_assignments" FromRole="group_assignments" ToRole="class_assignments" />
+          <NavigationProperty Name="group" Relationship="UnnDataModel.FK_group_assignments_groups" FromRole="group_assignments" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="group">
+          <Key>
+            <PropertyRef Name="group_id" />
+          </Key>
+          <Property Name="group_id" Type="Int32" Nullable="false" />
+          <Property Name="year_id" Type="Int32" Nullable="false" />
+          <Property Name="direction_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="direction" Relationship="UnnDataModel.FK_groups_directions" FromRole="groups" ToRole="directions" />
+          <NavigationProperty Name="group_assignments" Relationship="UnnDataModel.FK_group_assignments_groups" FromRole="groups" ToRole="group_assignments" />
+        </EntityType>
+        <EntityType Name="room">
+          <Key>
+            <PropertyRef Name="room_id" />
+          </Key>
+          <Property Name="room_id" Type="Int32" Nullable="false" />
+          <Property Name="building_id" Type="Int32" Nullable="false" />
+          <Property Name="room_number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="building" Relationship="UnnDataModel.FK_room_building" FromRole="rooms" ToRole="buildings" />
+          <NavigationProperty Name="class_assignments" Relationship="UnnDataModel.FK_class_assignments_rooms" FromRole="rooms" ToRole="class_assignments" />
+        </EntityType>
+        <EntityType Name="start_times">
+          <Key>
+            <PropertyRef Name="start_time_id" />
+          </Key>
+          <Property Name="start_time_id" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="class_assignments" Relationship="UnnDataModel.FK_class_assignments_start_times" FromRole="start_times" ToRole="class_assignments" />
+        </EntityType>
+        <EntityType Name="teacher">
+          <Key>
+            <PropertyRef Name="teacher_id" />
+          </Key>
+          <Property Name="teacher_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="first_name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="class_assignments" Relationship="UnnDataModel.FK_class_assignments_teachers" FromRole="teachers" ToRole="class_assignments" />
+        </EntityType>
+        <EntityType Name="weekday">
+          <Key>
+            <PropertyRef Name="weekday_id" />
+          </Key>
+          <Property Name="weekday_id" Type="Int32" Nullable="false" />
+          <Property Name="weekday1" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="class_assignments" Relationship="UnnDataModel.FK_class_assignments_weekdays" FromRole="weekdays" ToRole="class_assignments" />
+        </EntityType>
+        <Association Name="FK_room_building">
+          <End Role="buildings" Type="UnnDataModel.building" Multiplicity="1" />
+          <End Role="rooms" Type="UnnDataModel.room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="buildings">
+              <PropertyRef Name="building_id" />
+            </Principal>
+            <Dependent Role="rooms">
+              <PropertyRef Name="building_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_class_assignments_rooms">
+          <End Role="rooms" Type="UnnDataModel.room" Multiplicity="1" />
+          <End Role="class_assignments" Type="UnnDataModel.class_assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rooms">
+              <PropertyRef Name="room_id" />
+            </Principal>
+            <Dependent Role="class_assignments">
+              <PropertyRef Name="room_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_class_assignments_start_times">
+          <End Role="start_times" Type="UnnDataModel.start_times" Multiplicity="1" />
+          <End Role="class_assignments" Type="UnnDataModel.class_assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="start_times">
+              <PropertyRef Name="start_time_id" />
+            </Principal>
+            <Dependent Role="class_assignments">
+              <PropertyRef Name="start_time_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_class_assignments_teachers">
+          <End Role="teachers" Type="UnnDataModel.teacher" Multiplicity="1" />
+          <End Role="class_assignments" Type="UnnDataModel.class_assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="teachers">
+              <PropertyRef Name="teacher_id" />
+            </Principal>
+            <Dependent Role="class_assignments">
+              <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_class_assignments_weekdays">
+          <End Role="weekdays" Type="UnnDataModel.weekday" Multiplicity="1" />
+          <End Role="class_assignments" Type="UnnDataModel.class_assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="weekdays">
+              <PropertyRef Name="weekday_id" />
+            </Principal>
+            <Dependent Role="class_assignments">
+              <PropertyRef Name="weekday_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_group_assignments_class_assignments">
+          <End Role="class_assignments" Type="UnnDataModel.class_assignments" Multiplicity="1" />
+          <End Role="group_assignments" Type="UnnDataModel.group_assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="class_assignments">
+              <PropertyRef Name="class_assignment_id" />
+            </Principal>
+            <Dependent Role="group_assignments">
+              <PropertyRef Name="class_assignment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_directions">
+          <End Role="directions" Type="UnnDataModel.direction" Multiplicity="1" />
+          <End Role="groups" Type="UnnDataModel.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="directions">
+              <PropertyRef Name="direction_id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="direction_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_group_assignments_groups">
+          <End Role="groups" Type="UnnDataModel.group" Multiplicity="1" />
+          <End Role="group_assignments" Type="UnnDataModel.group_assignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groups">
+              <PropertyRef Name="group_id" />
+            </Principal>
+            <Dependent Role="group_assignments">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UnnDataModelStoreContainer" CdmEntityContainer="UNNEntities">
+          <EntitySetMapping Name="buildings">
+            <EntityTypeMapping TypeName="UnnDataModel.building">
+              <MappingFragment StoreEntitySet="buildings">
+                <ScalarProperty Name="building_id" ColumnName="building_id" />
+                <ScalarProperty Name="building_name" ColumnName="building_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="class_assignments">
+            <EntityTypeMapping TypeName="UnnDataModel.class_assignments">
+              <MappingFragment StoreEntitySet="class_assignments">
+                <ScalarProperty Name="class_assignment_id" ColumnName="class_assignment_id" />
+                <ScalarProperty Name="room_id" ColumnName="room_id" />
+                <ScalarProperty Name="start_time_id" ColumnName="start_time_id" />
+                <ScalarProperty Name="weekday_id" ColumnName="weekday_id" />
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+                <ScalarProperty Name="class_name" ColumnName="class_name" />
+                <ScalarProperty Name="lecture_indicator" ColumnName="lecture_indicator" />
+                <ScalarProperty Name="odd_even_indicator" ColumnName="odd_even_indicator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departments">
+            <EntityTypeMapping TypeName="UnnDataModel.department">
+              <MappingFragment StoreEntitySet="departments">
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="department_name" ColumnName="department_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="directions">
+            <EntityTypeMapping TypeName="UnnDataModel.direction">
+              <MappingFragment StoreEntitySet="directions">
+                <ScalarProperty Name="direction_name" ColumnName="direction_name" />
+                <ScalarProperty Name="direction_id" ColumnName="direction_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="group_assignments">
+            <EntityTypeMapping TypeName="UnnDataModel.group_assignments">
+              <MappingFragment StoreEntitySet="group_assignments">
+                <ScalarProperty Name="group_assignment_id" ColumnName="group_assignment_id" />
+                <ScalarProperty Name="class_assignment_id" ColumnName="class_assignment_id" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="subgroup_id" ColumnName="subgroup_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="UnnDataModel.group">
+              <MappingFragment StoreEntitySet="groups">
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="year_id" ColumnName="year_id" />
+                <ScalarProperty Name="direction_id" ColumnName="direction_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rooms">
+            <EntityTypeMapping TypeName="UnnDataModel.room">
+              <MappingFragment StoreEntitySet="rooms">
+                <ScalarProperty Name="room_id" ColumnName="room_id" />
+                <ScalarProperty Name="building_id" ColumnName="building_id" />
+                <ScalarProperty Name="room_number" ColumnName="room_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="start_times">
+            <EntityTypeMapping TypeName="UnnDataModel.start_times">
+              <MappingFragment StoreEntitySet="start_times">
+                <ScalarProperty Name="start_time_id" ColumnName="start_time_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teachers">
+            <EntityTypeMapping TypeName="UnnDataModel.teacher">
+              <MappingFragment StoreEntitySet="teachers">
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="weekdays">
+            <EntityTypeMapping TypeName="UnnDataModel.weekday">
+              <MappingFragment StoreEntitySet="weekdays">
+                <ScalarProperty Name="weekday_id" ColumnName="weekday_id" />
+                <ScalarProperty Name="weekday1" ColumnName="weekday" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RoomService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/UnnServiceWebsite/RoomService.svc?xsd=xsd3" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost/UnnServiceWebsite/RoomService.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/UnnServiceWebsite/RoomService.svc?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/DataContracts" />
+      <xsd:import schemaLocation="http://localhost/UnnServiceWebsite/RoomService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IRoomService_GetRooms_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRooms" />
+  </wsdl:message>
+  <wsdl:message name="IRoomService_GetRooms_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoomsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoomService_GetClasses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClasses" />
+  </wsdl:message>
+  <wsdl:message name="IRoomService_GetClasses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClassesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoomService_GetTimesheet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="IRoomService_GetTimesheet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimesheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoomService_AddClassForYear_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddClassForYear" />
+  </wsdl:message>
+  <wsdl:message name="IRoomService_AddClassForYear_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddClassForYearResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoomService_AddClassForDirection_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddClassForDirection" />
+  </wsdl:message>
+  <wsdl:message name="IRoomService_AddClassForDirection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddClassForDirectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoomService_AddClassForGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddClassForGroup" />
+  </wsdl:message>
+  <wsdl:message name="IRoomService_AddClassForGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddClassForGroupResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IRoomService">
+    <wsdl:operation name="GetRooms">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoomService/GetRooms" message="tns:IRoomService_GetRooms_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoomService/GetRoomsResponse" message="tns:IRoomService_GetRooms_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClasses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoomService/GetClasses" message="tns:IRoomService_GetClasses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoomService/GetClassesResponse" message="tns:IRoomService_GetClasses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimesheet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoomService/GetTimesheet" message="tns:IRoomService_GetTimesheet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoomService/GetTimesheetResponse" message="tns:IRoomService_GetTimesheet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddClassForYear">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoomService/AddClassForYear" message="tns:IRoomService_AddClassForYear_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoomService/AddClassForYearResponse" message="tns:IRoomService_AddClassForYear_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddClassForDirection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoomService/AddClassForDirection" message="tns:IRoomService_AddClassForDirection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoomService/AddClassForDirectionResponse" message="tns:IRoomService_AddClassForDirection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddClassForGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoomService/AddClassForGroup" message="tns:IRoomService_AddClassForGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoomService/AddClassForGroupResponse" message="tns:IRoomService_AddClassForGroup_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IRoomService" type="tns:IRoomService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetRooms">
+      <soap:operation soapAction="http://tempuri.org/IRoomService/GetRooms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClasses">
+      <soap:operation soapAction="http://tempuri.org/IRoomService/GetClasses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTimesheet">
+      <soap:operation soapAction="http://tempuri.org/IRoomService/GetTimesheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddClassForYear">
+      <soap:operation soapAction="http://tempuri.org/IRoomService/AddClassForYear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddClassForDirection">
+      <soap:operation soapAction="http://tempuri.org/IRoomService/AddClassForDirection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddClassForGroup">
+      <soap:operation soapAction="http://tempuri.org/IRoomService/AddClassForGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RoomService">
+    <wsdl:port name="BasicHttpBinding_IRoomService" binding="tns:BasicHttpBinding_IRoomService">
+      <soap:address location="http://localhost/UnnServiceWebsite/RoomService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

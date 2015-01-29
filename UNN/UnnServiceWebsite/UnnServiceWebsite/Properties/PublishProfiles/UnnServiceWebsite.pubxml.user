@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Debug</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/DataAccess.dll">
+      <publishTime>01/29/2015 02:36:12</publishTime>
+    </File>
+    <File Include="bin/DataAccess.pdb">
+      <publishTime>01/29/2015 02:36:12</publishTime>
+    </File>
+    <File Include="bin/DataContracts.dll">
+      <publishTime>01/29/2015 02:36:12</publishTime>
+    </File>
+    <File Include="bin/DataContracts.pdb">
+      <publishTime>01/29/2015 02:36:12</publishTime>
+    </File>
+    <File Include="bin/DataServices.dll">
+      <publishTime>01/29/2015 02:36:14</publishTime>
+    </File>
+    <File Include="bin/DataServices.pdb">
+      <publishTime>01/29/2015 02:36:14</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>12/07/2014 02:52:02</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.Extended.dll">
+      <publishTime>12/07/2014 02:52:02</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>12/07/2014 02:52:02</publishTime>
+    </File>
+    <File Include="bin/Repositories.dll">
+      <publishTime>01/29/2015 02:36:14</publishTime>
+    </File>
+    <File Include="bin/Repositories.pdb">
+      <publishTime>01/29/2015 02:36:14</publishTime>
+    </File>
+    <File Include="bin/RepositoryInterfaces.dll">
+      <publishTime>01/29/2015 02:36:13</publishTime>
+    </File>
+    <File Include="bin/RepositoryInterfaces.pdb">
+      <publishTime>01/29/2015 02:36:13</publishTime>
+    </File>
+    <File Include="bin/ServiceContracts.dll">
+      <publishTime>01/29/2015 02:36:12</publishTime>
+    </File>
+    <File Include="bin/ServiceContracts.pdb">
+      <publishTime>01/29/2015 02:36:12</publishTime>
+    </File>
+    <File Include="bin/UnnServiceWebsite.dll">
+      <publishTime>01/29/2015 02:36:14</publishTime>
+    </File>
+    <File Include="bin/UnnServiceWebsite.pdb">
+      <publishTime>01/29/2015 02:36:14</publishTime>
+    </File>
+    <File Include="bin/Utils.dll">
+      <publishTime>01/29/2015 02:36:12</publishTime>
+    </File>
+    <File Include="bin/Utils.pdb">
+      <publishTime>01/29/2015 02:36:12</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>12/07/2014 03:17:17</publishTime>
+    </File>
+    <File Include="Service1.svc">
+      <publishTime>10/15/2014 21:45:24</publishTime>
+    </File>
+    <File Include="Stylesheets/stylesheet_envelope.xsl">
+      <publishTime>01/29/2015 01:42:42</publishTime>
+    </File>
+    <File Include="Stylesheets/stylesheet_plain.xsl">
+      <publishTime>01/29/2015 01:42:42</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>01/29/2015 02:36:19</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

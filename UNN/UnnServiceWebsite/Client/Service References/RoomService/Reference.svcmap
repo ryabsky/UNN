@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="20d570ef-1ea7-497f-87ce-442317b97cba" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/UnnServiceWebsite/RoomService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RoomService.xsd" MetadataType="Schema" ID="9c6626df-c272-43af-abff-4847916a0e5b" SourceId="1" SourceUrl="http://localhost/UnnServiceWebsite/RoomService.svc?xsd=xsd1" />
+    <MetadataFile FileName="RoomService.wsdl" MetadataType="Wsdl" ID="bea9843a-5a33-47d1-8c1c-68c035045213" SourceId="1" SourceUrl="http://localhost/UnnServiceWebsite/RoomService.svc?wsdl" />
+    <MetadataFile FileName="RoomService1.xsd" MetadataType="Schema" ID="bf932c39-7749-4958-a13a-d8062cdd6b3b" SourceId="1" SourceUrl="http://localhost/UnnServiceWebsite/RoomService.svc?xsd=xsd0" />
+    <MetadataFile FileName="RoomService.disco" MetadataType="Disco" ID="300f1515-575d-417b-80bb-af7d50a4e73e" SourceId="1" SourceUrl="http://localhost/UnnServiceWebsite/RoomService.svc?disco" />
+    <MetadataFile FileName="RoomService2.xsd" MetadataType="Schema" ID="f8c5ad9d-9148-4ce2-a727-f91ba1c0085a" SourceId="1" SourceUrl="http://localhost/UnnServiceWebsite/RoomService.svc?xsd=xsd2" />
+    <MetadataFile FileName="RoomService3.xsd" MetadataType="Schema" ID="fdf2c530-4ca3-4a3c-a09c-401865912162" SourceId="1" SourceUrl="http://localhost/UnnServiceWebsite/RoomService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
